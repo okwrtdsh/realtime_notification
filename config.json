@@ -1,0 +1,15 @@
+{
+  "db": {
+    "protocol": "tcp",
+    "user": "develop",
+    "password": "develop",
+    "host": "localhost",
+    "port": 5432,
+    "name": "attendance_schedule",
+    "sql_query": "SELECT * FROM staff_attend_days"
+  },
+  "http": {
+    "port": 8080,
+    "html_path": "./index.html"
+  }
+}

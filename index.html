@@ -1,0 +1,24 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>log</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socketio = io.connect('http://localhost:8080');
+    socketio.on("change", function (dict_list){
+      showLog(dict_list);
+    });
+    function showLog(dict_list) {
+      var logArea = document.getElementById('log');
+      var newDiv = document.createElement('div');
+      newDiv.innerHTML = ++i + " : " + JSON.stringify(dict_list);
+      logArea.appendChild(newDiv);
+    }
+    i = 0;
+  </script>
+</head>
+<body>
+  <h1>Log</h1>
+  <div id="log"></div>
+</body>
+</html>
