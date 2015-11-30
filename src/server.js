@@ -49,6 +49,15 @@ function setupPGConnection(){
                     + config.db.host + ":"
                     + config.db.port + "/"
                     + config.db.name;
+  var sql_query;
+  fs.readFile(config.db.query_path, function (err, content){
+    if(err){
+      console.log(err);
+      process.exit();
+    }
+    sql_query = content.toString();
+    console.log(sql_query);
+  });
   pg.connect(pgConString, function(err, client){
     if(err){
       console.log(err);
@@ -56,7 +65,7 @@ function setupPGConnection(){
     }
     client.on('notification', function(msg){
       console.log(msg);
-      client.query(config.db.sql_query, function(err, result){
+      client.query(sql_query, function(err, result){
         if(err){
           console.log(err);
         }
